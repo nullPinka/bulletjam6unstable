@@ -27,7 +27,6 @@ rotation = 0.958186
 [node name="bullet2" parent="bullets" instance=ExtResource("1_hyk8p")]
 position = Vector2(466, 270)
 rotation = 1.43641
-scale = Vector2(1, 1)
 
 [node name="bullet3" parent="bullets" instance=ExtResource("1_hyk8p")]
 position = Vector2(779, 172)
