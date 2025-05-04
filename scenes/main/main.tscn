@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://4bkx8lxkjdx1"]
+
+[ext_resource type="PackedScene" uid="uid://d868x6bekvyk" path="res://scenes/bullets/bullet.tscn" id="1_hyk8p"]
+[ext_resource type="Script" uid="uid://4jd8m525i5cv" path="res://scenes/main/main.gd" id="1_k2fmo"]
+[ext_resource type="PackedScene" uid="uid://dh420yjceg1mi" path="res://scenes/player/player.tscn" id="2_iuonh"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_k2fmo")
+
+[node name="player" parent="." instance=ExtResource("2_iuonh")]
+position = Vector2(589, 519)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 66.0
+offset_top = 28.0
+offset_right = 127.0
+offset_bottom = 58.0
+text = "Move THem
+"
+
+[node name="bullets" type="Node" parent="."]
+
+[node name="bullet" parent="bullets" instance=ExtResource("1_hyk8p")]
+position = Vector2(651, 366)
+rotation = 0.958186
+
+[node name="bullet2" parent="bullets" instance=ExtResource("1_hyk8p")]
+position = Vector2(466, 270)
+rotation = 1.43641
+scale = Vector2(1, 1)
+
+[node name="bullet3" parent="bullets" instance=ExtResource("1_hyk8p")]
+position = Vector2(779, 172)
+rotation = 0.523599
+
+[connection signal="pressed" from="Button" to="." method="test"]
