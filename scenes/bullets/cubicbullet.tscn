@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c75b3qp5081s4"]
+
+[ext_resource type="Script" uid="uid://b0lcdwflw2lur" path="res://scenes/bullets/cubicbullet.gd" id="1_es88q"]
+[ext_resource type="Texture2D" uid="uid://d0tkv4uyclsph" path="res://icon.svg" id="2_g0ktn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5f1na"]
+radius = 32.1403
+
+[node name="bullet" type="Node2D"]
+script = ExtResource("1_es88q")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_g0ktn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5f1na")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(3.2, 3.2)

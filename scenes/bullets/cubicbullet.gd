@@ -1,6 +1,6 @@
 extends "bullet.gd"
 
-func _ready():
+func _enter_tree():
 	parameters = [position, position + Vector2(100, 20), position + Vector2(1000, 200), position + Vector2(10,5), 0.001]
 
 func movefunc(p0, p1, p2, p3, t):
@@ -14,4 +14,4 @@ func movefunc(p0, p1, p2, p3, t):
 	return r0.lerp(r1, t)
 
 func _physics_process(delta: float) -> void:
-	movefunc.call(parameters)
+	position = movefunc.callv([position, position + Vector2(100, 20), position + Vector2(50, 300), position + Vector2(500,10), 0.01])

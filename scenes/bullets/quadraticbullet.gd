@@ -8,4 +8,4 @@ func movefunc(p0, p1, p2, t):
 
 
 func _physics_process(delta: float) -> void:
-	movefunc.call(parameters)
+	movefunc.callv(parameters)

@@ -1,10 +1,9 @@
 extends Node2D
 
-func _ready():
-	$bullets/bullet.set_script("res://scenes/bullets/cubicbullet.gd")
-	$bullets/bullet2.set_script("res://scenes/bullets/quadraticbullet.gd")
-	$bullets/bullet3.set_script("res://scenes/bullets/linearbullet.gd")
-	
-	var newbull = load("res://scenes/bullets/bullet.tscn")
-	newbull.set_script("res://scenes/bullets/cubicbullet.gd")
-	$bullets.add_child(newbull)
+var lifetime = 0
+
+func _physics_process(delta: float) -> void:
+	lifetime += delta
+	if lifetime > 1.0 and $bullets.get_node_or_null("bullet2") != null:
+		$bullets/bullet2.parameters = [Vector2(400, 400), Vector2(50, 200), 0.0001]
+	return;
