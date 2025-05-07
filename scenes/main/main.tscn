@@ -1,10 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://4bkx8lxkjdx1"]
+[gd_scene load_steps=5 format=3 uid="uid://4bkx8lxkjdx1"]
 
 [ext_resource type="Script" uid="uid://4jd8m525i5cv" path="res://scenes/main/main.gd" id="1_k2fmo"]
 [ext_resource type="PackedScene" uid="uid://dh420yjceg1mi" path="res://scenes/player/player.tscn" id="2_iuonh"]
-[ext_resource type="PackedScene" uid="uid://c75b3qp5081s4" path="res://scenes/bullets/cubicbullet.tscn" id="3_6q06x"]
-[ext_resource type="PackedScene" uid="uid://b1e5cjqfriou3" path="res://scenes/bullets/linearbullet.tscn" id="4_ow5a4"]
-[ext_resource type="PackedScene" uid="uid://cl5a8vqv5bjn8" path="res://scenes/bullets/quadraticbullet.tscn" id="5_hujxm"]
 [ext_resource type="PackedScene" uid="uid://2fmwqmoq0r7l" path="res://scenes/boss/boss.tscn" id="6_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://byab86rv6dll3" path="res://scenes/atkspawner/atkspawner.tscn" id="7_hujxm"]
 
@@ -14,18 +11,7 @@ script = ExtResource("1_k2fmo")
 [node name="player" parent="." instance=ExtResource("2_iuonh")]
 position = Vector2(589, 519)
 
-[node name="bullets" type="Node" parent="."]
-
-[node name="bullet" parent="bullets" instance=ExtResource("3_6q06x")]
-position = Vector2(251, 289)
-
-[node name="bullet2" parent="bullets" instance=ExtResource("4_ow5a4")]
-position = Vector2(595, 303)
-
-[node name="bullet3" parent="bullets" instance=ExtResource("5_hujxm")]
-position = Vector2(1023, 309)
-
 [node name="boss" parent="." instance=ExtResource("6_ow5a4")]
-position = Vector2(263, 111)
+position = Vector2(769, 312)
 
 [node name="atkspawner" parent="." instance=ExtResource("7_hujxm")]

@@ -3,15 +3,14 @@ extends Node2D
 var steppedon = false
 
 func movepos():
-	# TODO: Randomize x/y within screen borders
-	var x = randi_range(0, 1100)
-	var y = randi_range(0, 400)
+	var x = randi_range(0, 1920 - $atkicon.get_rect().size.x)
+	var y = randi_range(0, 1080 - $atkicon.get_rect().size.y)
 	global_position = Vector2(x, y)
 
 func area_entered(area):
 	if area.get_parent().name == "player":
 		steppedon = true
-		$atkicon.modulate = Color("ff00ff")
+		$atkicon.modulate =Color("ff00ff")
 
 func area_exited(area):
 	if area.get_parent().name == "player":
@@ -22,7 +21,6 @@ func attack():
 	# TODO: Attack boss
 	movepos()
 	$Timer.start()
-	return;
 
 func _ready():
 	movepos()

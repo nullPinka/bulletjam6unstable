@@ -16,6 +16,8 @@ func _physics_process(delta):
 			speed.y -= 3
 		if Input.is_key_pressed(KEY_S):
 			speed.y += 3
+		if Input.is_key_pressed(KEY_SHIFT):
+			speed *= 2
 	
 	move(speed)
 
