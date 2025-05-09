@@ -6,8 +6,10 @@ var lifetime = 0
 var moving = false
 var moving_to = Vector2.ZERO
 
+signal attack_done
+
 # Spawn bullets in spawn circle around boss
-func circumatt(from, to, gap, bullet : String, speed = 1):
+func circumatt(from, to, gap, bullet : String, speed = 1, num = 1):
 	if gap == 0:
 		gap = 1
 	
@@ -16,19 +18,21 @@ func circumatt(from, to, gap, bullet : String, speed = 1):
 		to = from + 1
 	
 	var newbull = load("res://scenes/bullets/" + bullet + ".tscn")
-	for i in range(from, to, gap):
-		var tempbull = newbull.instantiate()
-		tempbull.scale = Vector2(0.5,0.5)
-		tempbull.global_position = spawncirc * Vector2.from_angle(i * (PI / 180)) + global_position
-		tempbull.movementangle = Vector2.from_angle(i * (PI / 180))
-		tempbull.speed = speed
-		tempbull.moving = true
-		get_parent().add_child(tempbull)
+	for j in range(0, num):
+		for i in range(from, to, gap):
+			var tempbull = newbull.instantiate()
+			tempbull.scale = Vector2(0.5,0.5)
+			tempbull.global_position = spawncirc * Vector2.from_angle(i * (PI / 180)) + global_position
+			tempbull.movementangle = Vector2.from_angle(i * (PI / 180))
+			tempbull.speed = speed
+			tempbull.moving = true
+			get_parent().add_child(tempbull)
+		await get_tree().create_timer(.2).timeout
 
 func shotgun(bullet):
-	circumatt(0, 180, 8, "linearbullet")
-	circumatt(5, 185, 7, "linearbullet", 3)
-	circumatt(-5, 175, 6, "linearbullet", 6)
+	circumatt(0, 180, 8, bullet)
+	circumatt(5, 185, 7, bullet, 3)
+	circumatt(-5, 175, 6, bullet, 6)
 
 func linespawn(from, to, dir, num, bullet, spawn_delay = .1):
 	var curr = from
@@ -77,15 +81,37 @@ func move(to):
 	moving_to = to
 	moving = true
 
+func attack():
+	randomize()
+	var select = randi_range(0, 5)
+	match select:
+		1:
+			var fullang = 45
+			var degplayang = get_angle_to(get_parent().get_player().global_position * (180/PI))
+			circumatt(degplayang + fullang/2, degplayang + 360 - fullang/2, 2, "linearbullet", 3)
+			return;
+		2:
+			return;
+
 func _ready():
+	attack_done.connect(func(): 
+		get_tree().create_timer(1).timeout
+		attack()
+		)
 	await get_tree().create_timer(1).timeout
+	var fullang = 45
+	var degplayang = get_angle_to(get_parent().get_player().global_position) * (180/PI)
+	circumatt(degplayang + (fullang/2), degplayang + 360 - fullang/2, 2, "linearbullet", 3, 100)
+	
+	await get_tree().create_timer(5).timeout
+	
 	var linear = load("res://scenes/bullets/linearbullet.tscn")
 	#linespawn(Vector2(100, 100), Vector2(100, 600), Vector2(1,0), 10, linear)
 	#shotgun(1)
 	#follow_shot(100, linear)
 	circumatt(0, 340, 2, "linearbullet", 3)
 	cone_follow(20, 10, 1, 5)
-	shotgun(1)
+	shotgun("linearbullet")
 	move(Vector2(100,100))
 
 func _physics_process(delta: float) -> void:

@@ -6,6 +6,7 @@ var movementangle = Vector2.ZERO
 var speed = 1
 var fading = false;
 var moving = false;
+var lifecap = -1
 
 func rng_fade():
 	# TODO: Fading bullets
@@ -14,6 +15,10 @@ func rng_fade():
 	var time = randi() + randf()
 	var freq = randi()
 	return;
+
+func _ready():
+	if lifecap != -1:
+		get_tree().create_timer(lifecap).timeout.connect(func(): queue_free())
 
 # TODO: Aaaaa I forgot to use movefunc
 func _physics_process(delta: float) -> void:
