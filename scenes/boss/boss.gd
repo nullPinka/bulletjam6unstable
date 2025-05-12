@@ -81,23 +81,29 @@ func move(to):
 	moving_to = to
 	moving = true
 
-func attack():
-	randomize()
-	var select = randi_range(0, 5)
+func attack(setattk = -1):
+	var select
+	if setattk == -1:
+		randomize()
+		select = randi_range(0, 5)
+	else:
+		select = setattk
 	match select:
 		1:
 			var fullang = 45
-			var degplayang = get_angle_to(get_parent().get_player().global_position * (180/PI))
-			circumatt(degplayang + fullang/2, degplayang + 360 - fullang/2, 2, "linearbullet", 3)
+			var degplayang = get_angle_to(get_parent().get_player().global_position) * (180/PI)
+			circumatt(degplayang + (fullang/2), degplayang + 360 - fullang/2, 2, "linearbullet", 3, 100)
 			return;
 		2:
 			return;
 
 func _ready():
+	await get_tree().create_timer(1).timeout
 	attack_done.connect(func(): 
 		get_tree().create_timer(1).timeout
 		attack()
 		)
+	#attack(1)
 	await get_tree().create_timer(1).timeout
 	var fullang = 45
 	var degplayang = get_angle_to(get_parent().get_player().global_position) * (180/PI)

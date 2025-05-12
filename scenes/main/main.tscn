@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://4bkx8lxkjdx1"]
+[gd_scene load_steps=4 format=3 uid="uid://4bkx8lxkjdx1"]
 
 [ext_resource type="Script" uid="uid://4jd8m525i5cv" path="res://scenes/main/main.gd" id="1_k2fmo"]
 [ext_resource type="PackedScene" uid="uid://dh420yjceg1mi" path="res://scenes/player/player.tscn" id="2_iuonh"]
-[ext_resource type="PackedScene" uid="uid://2fmwqmoq0r7l" path="res://scenes/boss/boss.tscn" id="6_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://byab86rv6dll3" path="res://scenes/atkspawner/atkspawner.tscn" id="7_hujxm"]
 
 [node name="main" type="Node2D"]
@@ -10,8 +9,5 @@ script = ExtResource("1_k2fmo")
 
 [node name="player" parent="." instance=ExtResource("2_iuonh")]
 position = Vector2(589, 519)
-
-[node name="boss" parent="." instance=ExtResource("6_ow5a4")]
-position = Vector2(769, 312)
 
 [node name="atkspawner" parent="." instance=ExtResource("7_hujxm")]
