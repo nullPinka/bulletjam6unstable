@@ -9,5 +9,3 @@ script = ExtResource("1_8ftqf")
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_dgf3a")
-
-[node name="bulletspawner" type="Node2D" parent="."]

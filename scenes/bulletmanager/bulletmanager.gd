@@ -3,6 +3,7 @@ extends Node2D
 var bullets = []
 var spears = []
 var max_lifetime : float = 12.0
+var bounding_box = Rect2(Vector2.ZERO, Vector2(1920, 1080))
 
 # Creating bullets
 
@@ -61,7 +62,7 @@ func _physics_process(delta: float) -> void:
 	for i in range(0, bullets.size()):
 		var bullet = bullets[i] as Bullet
 		
-		if bullet.lifetime > max_lifetime:
+		if bullet.lifetime > max_lifetime or !bounding_box.has_point(bullet.current_position):
 			bullet_destruction_queue.append(bullet)
 			continue
 		
