@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://2fmwqmoq0r7l"]
 
-[ext_resource type="Script" uid="uid://bvg5jvxc7e28b" path="res://scenes/boss/boss.gd" id="1_8ftqf"]
+[ext_resource type="Script" uid="uid://hqe2yl3pyxmj" path="res://scenes/boss/boss2.gd" id="1_8ftqf"]
 [ext_resource type="Texture2D" uid="uid://d0tkv4uyclsph" path="res://icon.svg" id="1_dgf3a"]
 
 [node name="boss" type="Node2D"]

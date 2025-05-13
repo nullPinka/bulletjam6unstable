@@ -17,12 +17,12 @@ scale = Vector2(1, 0.40625)
 texture = ExtResource("1_ejufs")
 centered = false
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="atkarea" type="Area2D" parent="."]
 position = Vector2(64, 26)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="atkarea"]
 shape = SubResource("RectangleShape2D_jei3c")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 autostart = true

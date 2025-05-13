@@ -23,10 +23,19 @@ func _physics_process(delta):
 
 func move(speed):
 	global_position += speed
+	if global_position.x > 1920:
+		global_position.x = 1920
+	if global_position.y > 1080:
+		global_position.y = 1080
+	
+	if global_position.x < 0:
+		global_position.x = 0
+	if global_position.y < 0:
+		global_position.y = 0
 	return;
 
 func death(area):
-	if area.name == "hitbox":
+	if area.name != "atkarea":
 		hasControl = false
 		$GPUParticles2D.emitting = true
 		$Icon.visible = false

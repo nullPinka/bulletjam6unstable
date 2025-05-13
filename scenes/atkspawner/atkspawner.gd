@@ -24,8 +24,8 @@ func attack():
 
 func _ready():
 	movepos()
-	$Area2D.area_entered.connect(area_entered)
-	$Area2D.area_exited.connect(area_exited)
+	$atkarea.area_entered.connect(area_entered)
+	$atkarea.area_exited.connect(area_exited)
 	$Timer.timeout.connect(movepos)
 
 func _physics_process(delta: float) -> void:

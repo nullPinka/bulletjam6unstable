@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://duj0xgi0epas6"]
+
+[ext_resource type="Script" uid="uid://b2pioa021sno3" path="res://scenes/bulletmanager/bulletmanager.gd" id="1_x4ajm"]
+
+[node name="bulletmanager" type="Node2D"]
+script = ExtResource("1_x4ajm")
+
+[node name="shared_area" type="Area2D" parent="."]

@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://4bkx8lxkjdx1"]
+[gd_scene load_steps=6 format=3 uid="uid://4bkx8lxkjdx1"]
 
 [ext_resource type="Script" uid="uid://4jd8m525i5cv" path="res://scenes/main/main.gd" id="1_k2fmo"]
 [ext_resource type="PackedScene" uid="uid://dh420yjceg1mi" path="res://scenes/player/player.tscn" id="2_iuonh"]
+[ext_resource type="PackedScene" uid="uid://duj0xgi0epas6" path="res://scenes/bulletmanager/bulletmanager.tscn" id="4_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://2fmwqmoq0r7l" path="res://scenes/boss/boss.tscn" id="5_6q06x"]
 [ext_resource type="PackedScene" uid="uid://byab86rv6dll3" path="res://scenes/atkspawner/atkspawner.tscn" id="7_hujxm"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_k2fmo")
 
 [node name="player" parent="." instance=ExtResource("2_iuonh")]
-position = Vector2(589, 519)
+position = Vector2(162, 558)
 
 [node name="atkspawner" parent="." instance=ExtResource("7_hujxm")]
+
+[node name="bulletmanager" parent="." instance=ExtResource("4_l3cfh")]
+
+[node name="boss" parent="." instance=ExtResource("5_6q06x")]
+position = Vector2(340, 269)
