@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dl2il0ems7xrf"]
+
+[node name="mainmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="buttoncontainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 859.0
+offset_top = 608.0
+offset_right = 1145.0
+offset_bottom = 956.0
+alignment = 1
+
+[node name="Button" type="Button" parent="buttoncontainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Boss Fight
+"
+
+[node name="Button2" type="Button" parent="buttoncontainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Endless"
+
+[node name="Button3" type="Button" parent="buttoncontainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Exit"
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 699.0
+offset_top = 265.0
+offset_right = 1342.0
+offset_bottom = 611.0
+bbcode_enabled = true
+text = "[font_size=72] BAU BAU-let Hell [/font_size]"

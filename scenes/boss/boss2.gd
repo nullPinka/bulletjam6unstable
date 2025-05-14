@@ -40,15 +40,15 @@ func player_cave(num : int, speed : float = 200, degree: float = PI/4):
 		await get_tree().create_timer(.1).timeout
 		
 
-func sweep(from : float, to : float, num : int):
+func sweep(from : float, to : float, num : int, speed : float = 200):
 	for i in range(0, num):
 		var angle = lerp(from, to, i/float(num - 1))
 		var loc : Vector2 = Vector2(spawn_radius * cos(angle), spawn_radius * sin(angle))
-		spawn_bullet(loc, 200, loc + global_position)
+		spawn_bullet(loc, speed, loc + global_position)
 		await get_tree().create_timer(.1).timeout
 
 func _ready():
 	await get_tree().create_timer(1).timeout
 	for i in range(0, 12):
-		sweep(PI/4, 3 * PI/4, 8)
+		sweep(PI/4, 3 * PI/4, 8, 50)
 		await get_tree().create_timer(.3).timeout
