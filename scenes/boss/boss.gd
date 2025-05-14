@@ -1,5 +1,7 @@
 extends Node2D
 
+# DEPRECIATED DUE TO OPTIMIZATIONS MADE IN boss2.gd
+
 var r = 6
 var spawncirc = PI * r * r
 var lifetime = 0

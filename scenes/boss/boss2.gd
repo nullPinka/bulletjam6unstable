@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var bullet_manager = get_parent().get_node("bulletmanager")
 var spawn_radius = 100 # Spawn radius = 100 for polar coords
-var spawn_circle = PI * pow(6, 2) # Spawn radius = 6
 @onready var player = get_parent().get_player()
 
 func spawn_bullet(mov : Vector2, speed : float, spawn : Vector2):
@@ -50,5 +49,5 @@ func sweep(from : float, to : float, num : int, speed : float = 200):
 func _ready():
 	await get_tree().create_timer(1).timeout
 	for i in range(0, 12):
-		sweep(PI/4, 3 * PI/4, 8, 50)
-		await get_tree().create_timer(.3).timeout
+		await sweep(PI/4, 3 * PI/4, 8, 75)
+		await sweep(3 * PI/4, PI/4, 9, 75)

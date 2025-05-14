@@ -5,6 +5,9 @@ var spears = []
 var max_lifetime : float = 12.0
 var bounding_box = Rect2(Vector2.ZERO, Vector2(1920, 1080))
 
+# Implemented based off of worldeater-dev blog
+# https://worldeater-dev.itch.io/bittersweet-birthday/devlog/210789/howto-drawing-a-metric-ton-of-bullets-in-godot
+
 # Creating bullets
 
 func spawn_bullet(mov : Vector2, speed: float, spawn_point : Vector2) -> void:
@@ -29,6 +32,7 @@ func _configure_bullet_collision(bullet : Bullet) -> void:
 	bullet.shape_rid = hitbox
 
 # On my own: try spears
+# !! Collision not working as expected, needs more work, commenting out for now !!
 
 #func spawn_spear(mov : Vector2, speed : float, spawn_point : Vector2, points : Rect2) -> void:
 	#var bullet : Spear = Spear.new()

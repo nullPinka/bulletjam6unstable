@@ -1,8 +1,18 @@
-[gd_scene format=3 uid="uid://dl2il0ems7xrf"]
+[gd_scene load_steps=2 format=3 uid="uid://dl2il0ems7xrf"]
+
+[ext_resource type="Script" uid="uid://37cpt8xm32rc" path="res://scenes/mainmenu/exit.gd" id="1_1css7"]
 
 [node name="mainmenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -29.0
+offset_top = -17.0
+offset_right = 1933.0
+offset_bottom = 1102.0
+color = Color(0.294118, 0.690196, 0.380392, 1)
 
 [node name="buttoncontainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -12,21 +22,22 @@ offset_right = 1145.0
 offset_bottom = 956.0
 alignment = 1
 
-[node name="Button" type="Button" parent="buttoncontainer"]
+[node name="bossfight" type="Button" parent="buttoncontainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Boss Fight
 "
 
-[node name="Button2" type="Button" parent="buttoncontainer"]
+[node name="endless" type="Button" parent="buttoncontainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Endless"
 
-[node name="Button3" type="Button" parent="buttoncontainer"]
+[node name="exit" type="Button" parent="buttoncontainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Exit"
+script = ExtResource("1_1css7")
 
 [node name="Title" type="RichTextLabel" parent="."]
 layout_mode = 0

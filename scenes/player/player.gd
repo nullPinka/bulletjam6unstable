@@ -5,7 +5,7 @@ var hasControl = true
 func _ready():
 	$Area2D.area_entered.connect(death)
 
-func _physics_process(delta):
+func _process(delta):
 	var speed = Vector2.ZERO
 	if hasControl:
 		if Input.is_key_pressed(KEY_A):
