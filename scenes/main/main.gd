@@ -1,6 +1,8 @@
 extends Node2D
 
 var lifetime = 0
+enum gs {ENDLESS, BOSS}
+var state = gs.BOSS
 
 func get_player():
 	return $player

@@ -1,6 +1,8 @@
 extends Node2D
 
 var steppedon = false
+var max_health = 1
+var boss_health = max_health
 
 func movepos():
 	var x = randi_range(0, 1920 - $atkicon.get_rect().size.x)
@@ -18,7 +20,7 @@ func area_exited(area):
 		$atkicon.modulate = Color("ffdf00")
 
 func attack():
-	# TODO: Attack boss
+	boss_health -= 1
 	movepos()
 	$Timer.start()
 
@@ -32,3 +34,6 @@ func _physics_process(delta: float) -> void:
 	if steppedon:
 		if Input.is_action_just_pressed("ui_accept"):
 			attack()
+			if boss_health == 0:
+				get_parent().get_parent().add_child(load("res://scenes/mainmenu/mainmenu.tscn").instantiate())
+				get_parent().queue_free()

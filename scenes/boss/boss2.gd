@@ -17,7 +17,7 @@ func player_chase(num):
 
 func player_cave(num : int, speed : float = 200, degree: float = PI/4):
 	for i in range(0, num):
-		# Place on polar coordinate from spawn_radius
+		# Place on polar coordinate from spawn_radius (relative to boss)
 		# x = r * cos(theta)
 		# y = r * sin(theta)
 		# r = radius of circle/length of line
@@ -39,15 +39,16 @@ func player_cave(num : int, speed : float = 200, degree: float = PI/4):
 		await get_tree().create_timer(.1).timeout
 		
 
-func sweep(from : float, to : float, num : int, speed : float = 200):
+func sweep(from : float, to : float, num : int, speed : float = 200, delay : float = 0.1):
 	for i in range(0, num):
 		var angle = lerp(from, to, i/float(num - 1))
 		var loc : Vector2 = Vector2(spawn_radius * cos(angle), spawn_radius * sin(angle))
 		spawn_bullet(loc, speed, loc + global_position)
-		await get_tree().create_timer(.1).timeout
+		
+		# Without this if, there's a base initialization time that gets waited, preventing the desired effect
+		if delay != 0:
+			await get_tree().create_timer(delay).timeout
 
 func _ready():
 	await get_tree().create_timer(1).timeout
-	for i in range(0, 12):
-		await sweep(PI/4, 3 * PI/4, 8, 75)
-		await sweep(3 * PI/4, PI/4, 9, 75)
+	sweep(0, PI, 100, 200, 0)

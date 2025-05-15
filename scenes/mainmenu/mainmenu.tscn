@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl2il0ems7xrf"]
+[gd_scene load_steps=4 format=3 uid="uid://dl2il0ems7xrf"]
 
 [ext_resource type="Script" uid="uid://37cpt8xm32rc" path="res://scenes/mainmenu/exit.gd" id="1_1css7"]
+[ext_resource type="Script" uid="uid://8x76uft5afka" path="res://scenes/mainmenu/bossfight.gd" id="1_oktx4"]
+[ext_resource type="Script" uid="uid://bpwh7fdlb8tjk" path="res://scenes/mainmenu/endless.gd" id="2_ckupo"]
 
 [node name="mainmenu" type="Control"]
 layout_mode = 3
@@ -27,11 +29,13 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Boss Fight
 "
+script = ExtResource("1_oktx4")
 
 [node name="endless" type="Button" parent="buttoncontainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Endless"
+script = ExtResource("2_ckupo")
 
 [node name="exit" type="Button" parent="buttoncontainer"]
 custom_minimum_size = Vector2(0, 50)
