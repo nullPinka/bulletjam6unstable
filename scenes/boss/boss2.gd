@@ -1,8 +1,19 @@
 extends Node2D
 
+# Attacking
 @onready var bullet_manager = get_parent().get_node("bulletmanager")
 var spawn_radius = 100 # Spawn radius = 100 for polar coords
 @onready var player = get_parent().get_player()
+# Moving
+var moving = false
+var m_to_pos = Vector2.ZERO
+var t_steps : float = 60
+var c_steps : float = 0
+var speed = 5
+
+signal stopped_moving
+
+# Attacking
 
 func spawn_bullet(mov : Vector2, speed : float, spawn : Vector2):
 	bullet_manager.spawn_bullet(mov, speed, spawn)
@@ -49,6 +60,28 @@ func sweep(from : float, to : float, num : int, speed : float = 200, delay : flo
 		if delay != 0:
 			await get_tree().create_timer(delay).timeout
 
+# Debugging
+
 func _ready():
 	await get_tree().create_timer(1).timeout
-	sweep(0, PI, 100, 200, 0)
+	move(Vector2(700,700))
+	await stopped_moving
+	move(Vector2(600, 700))
+	await stopped_moving
+	move(Vector2(0,0))
+	player_cave(300)
+
+# Movement
+
+func move(to_pos):
+	moving = true
+	m_to_pos = to_pos
+
+func _physics_process(delta: float) -> void:
+	if moving:
+		if moving:
+			# Could involve calc to make it move Not Particularly Linearly. Do later
+			global_position = global_position.move_toward(m_to_pos, speed)
+			if global_position == m_to_pos:
+				moving = false
+				emit_signal("stopped_moving")

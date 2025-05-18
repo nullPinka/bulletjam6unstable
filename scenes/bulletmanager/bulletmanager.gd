@@ -13,7 +13,6 @@ func spawn_bullet(mov : Vector2, speed: float, spawn_point : Vector2) -> void:
 	var bullet : Bullet = Bullet.new()
 	bullet.movement_vector = mov
 	bullet.speed = speed
-	bullet.spawn_point = spawn_point
 	bullet.current_position = spawn_point
 	
 	_configure_bullet_collision(bullet)

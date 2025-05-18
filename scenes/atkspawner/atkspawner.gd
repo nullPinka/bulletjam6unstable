@@ -1,7 +1,7 @@
 extends Node2D
 
 var steppedon = false
-var max_health = 1
+var max_health = 30
 var boss_health = max_health
 
 func movepos():
