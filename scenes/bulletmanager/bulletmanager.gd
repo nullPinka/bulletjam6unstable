@@ -44,6 +44,7 @@ func _physics_process(delta: float) -> void:
 		
 		var offset : Vector2 = bullet.movement_vector.normalized() * bullet.speed * delta
 		
+		
 		bullet.current_position += offset
 		used_transform.origin = bullet.current_position
 		PhysicsServer2D.area_set_shape_transform($shared_area.get_rid(), i, used_transform)

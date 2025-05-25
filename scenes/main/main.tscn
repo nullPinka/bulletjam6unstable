@@ -10,11 +10,18 @@
 script = ExtResource("1_k2fmo")
 
 [node name="player" parent="." instance=ExtResource("2_iuonh")]
-position = Vector2(162, 558)
+position = Vector2(949, 698)
 
 [node name="atkspawner" parent="." instance=ExtResource("7_hujxm")]
 
 [node name="bulletmanager" parent="." instance=ExtResource("4_l3cfh")]
 
 [node name="boss" parent="." instance=ExtResource("5_6q06x")]
-position = Vector2(340, 269)
+position = Vector2(953, 255)
+
+[node name="timecount" type="RichTextLabel" parent="."]
+offset_left = 725.0
+offset_top = 18.0
+offset_right = 1195.0
+offset_bottom = 127.0
+text = "00:00:00.00"
