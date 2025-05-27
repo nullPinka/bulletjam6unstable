@@ -42,3 +42,8 @@ func death(area):
 		# Need to defer set to prevent unexpected behavior
 		$Area2D.set_deferred("monitoring", false)
 		$Area2D.set_deferred("monitorable", false)
+		
+		await get_tree().create_timer(2).timeout
+		
+		get_parent().get_parent().add_child(load("res://scenes/mainmenu/mainmenu.tscn").instantiate())
+		get_parent().queue_free()
