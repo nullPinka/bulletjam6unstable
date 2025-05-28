@@ -67,7 +67,7 @@ func attack(num : int = -1):
 	
 	if num == -1:
 		randomize()
-		num = randi_range(0, 6)
+		num = randi_range(1, 6)
 	
 	match num:
 		1:
@@ -99,7 +99,7 @@ func _ready():
 # Movement
 
 func move(to_pos):
-	if to_pos.x < 0 or to_pos.y < 0 or to_pos.x > 1920 or to_pos.y > 1080:
+	if to_pos.x < 100 or to_pos.y < 100 or to_pos.x > 1920 or to_pos.y > 1080:
 		return;
 	
 	moving = true

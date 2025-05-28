@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://dndkpnudlus7o"]
+
+[ext_resource type="Script" uid="uid://tax41l11lxji" path="res://testwalkinbod.gd" id="1_110df"]
+[ext_resource type="Texture2D" uid="uid://d0tkv4uyclsph" path="res://icon.svg" id="2_sy1c5"]
+[ext_resource type="Script" uid="uid://bn2y7ar81hfni" path="res://scenes/movetest/tvbutton.gd" id="3_sy1c5"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_fwgk4"]
+vertices = PackedVector2Array(649.812, 68.1562, 712.672, 67.1562, 709.32, 171.047, 374.891, 173.062, 271.273, 87.9531, 269.273, 14.0234, 650.797, 14.9688, 377.109, 375.969, 715.93, 376.969, 715.062, 505.953, 9.07031, 503.039, 12.9219, 11.7578, 35.5, 11.2266, 39.5, 89.0391)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(4, 5, 6, 0), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 12, 13, 10), PackedInt32Array(7, 10, 13, 4, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 513, 725, 516, 726, 367, 387, 366, 385, 183, 719, 181, 723, 57, 660, 58, 661, 5, 259, 4, 261, 78, 49, 79, 45, 1, 3, 2)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eru2"]
+size = Vector2(128, 128)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="roomblocking" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="roomblocking"]
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 49.0
+offset_bottom = 51.0
+scale = Vector2(0.759134, 12.2802)
+
+[node name="ColorRect2" type="ColorRect" parent="roomblocking"]
+offset_left = 41.0
+offset_top = 86.0
+offset_right = 81.0
+offset_bottom = 126.0
+scale = Vector2(8.31695, 10.3664)
+color = Color(0, 1, 1, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="roomblocking"]
+offset_left = 267.0
+offset_top = 13.0
+offset_right = 307.0
+offset_bottom = 53.0
+scale = Vector2(9.63395, 1.79592)
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="roomblocking"]
+offset_left = 377.0
+offset_top = 67.0
+offset_right = 417.0
+offset_bottom = 107.0
+scale = Vector2(8.28131, 2.61015)
+color = Color(1, 0, 1, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="roomblocking"]
+offset_left = 375.0
+offset_top = 377.0
+offset_right = 415.0
+offset_bottom = 417.0
+scale = Vector2(8.46595, 3.26672)
+color = Color(0, 0.819608, 0, 1)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_fwgk4")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(708, 391)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_110df")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_sy1c5")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_5eru2")
+
+[node name="fov" type="CollisionPolygon2D" parent="CharacterBody2D"]
+polygon = PackedVector2Array(0, 0, 2000, 500, 2000, -500)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 77.0
+offset_top = 6.0
+offset_right = 214.0
+offset_bottom = 69.0
+script = ExtResource("3_sy1c5")
