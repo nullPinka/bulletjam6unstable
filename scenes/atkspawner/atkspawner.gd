@@ -12,7 +12,7 @@ func movepos():
 func area_entered(area):
 	if area.get_parent().name == "player":
 		steppedon = true
-		$atkicon.modulate =Color("ff00ff")
+		$atkicon.modulate = Color("ff00ff")
 
 func area_exited(area):
 	if area.get_parent().name == "player":
@@ -31,6 +31,10 @@ func _ready():
 	$Timer.timeout.connect(movepos)
 
 func _physics_process(delta: float) -> void:
+	#$atkicon.modulate.a = $Timer.time_left / $Timer.wait_time
+	$atkicon.modulate.r = ($Timer.wait_time - $Timer.time_left) / $Timer.wait_time
+	$atkicon.modulate.g = $Timer.time_left / $Timer.wait_time
+	
 	if steppedon:
 		if Input.is_action_just_pressed("ui_accept"):
 			attack()

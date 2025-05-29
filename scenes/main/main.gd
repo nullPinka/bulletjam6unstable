@@ -12,4 +12,5 @@ func get_boss():
 
 func _physics_process(delta: float) -> void:
 	lifetime += delta
-	$timecount.text = str(floori(lifetime))
+	if $player/Icon.visible:
+		$timecount.text = "[font_size=40]" + str(floori(lifetime)) + "[/font_size]"

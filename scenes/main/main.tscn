@@ -20,8 +20,9 @@ position = Vector2(949, 698)
 position = Vector2(953, 255)
 
 [node name="timecount" type="RichTextLabel" parent="."]
-offset_left = 725.0
+offset_left = 847.0
 offset_top = 18.0
-offset_right = 1195.0
+offset_right = 1317.0
 offset_bottom = 127.0
-text = "00:00:00.00"
+bbcode_enabled = true
+text = "[font_size=40] 00:00:00.00 [/font_size]"

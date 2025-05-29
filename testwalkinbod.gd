@@ -20,8 +20,7 @@ func set_movement_target(movement_target : Vector2):
 	$NavigationAgent2D.target_position = movement_target
 
 func turn_head(from, to):
-	if not from >= to:
-		$fov.rotation.lerp(from, to, 0.1)
+	$fov.rotation = Vector2(cos(to), sin(to)).angle()
 
 func _physics_process(delta: float) -> void:
 	if $NavigationAgent2D.is_navigation_finished():
