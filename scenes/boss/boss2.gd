@@ -70,23 +70,26 @@ func attack(num : int = -1):
 		num = randi_range(1, 6)
 	
 	match num:
-		1:
-			await sweep(PI, TAU, 20)
 		2:
-			player_cave(randi() % 50)
-			await player_chase(randi() % 50, (randi() % 200) + 200)
+			var bullc = randi() % 50
+			player_cave(bullc, 200, deg_to_rad(randf_range(15, 90)))
+			await player_chase(bullc, (randi() % 200) + 200)
 		3:
-			await sweep(0, PI/2, 10)
+			var start = deg_to_rad(randf_range(0, 360))
+			var end = deg_to_rad(randf_range(start + 20, start + 340))
+			var bullc = randi_range(0, 20)
+			await sweep(start, end, bullc)
 		4:
-			await player_cave(5)
+			var deg = randf_range(15, 90)
+			await player_cave(5, 200, deg_to_rad(deg))
 		5:
 			var mov_vec = Vector2(randi_range(0, 200), randi_range(0, 200))
 			await move(global_position + mov_vec)
 		6:
 			var mov_vec = Vector2(randi_range(0, 200), randi_range(0, 200))
 			move(global_position + mov_vec)
-		_:
-			move(Vector2(0,0))
+		1:
+			await sweep(0, 3600, randi_range(361, 719), 200, randf_range(0.001, 0.1))
 			
 	emit_signal("next_attack")
 	attacking = false
@@ -95,6 +98,12 @@ func attack(num : int = -1):
 
 func _ready():
 	await get_tree().create_timer(1).timeout
+	await attack(1)
+	await attack(1)
+	await attack(1)
+	await attack(1)
+	await attack(1)
+
 
 # Movement
 
@@ -105,9 +114,9 @@ func move(to_pos):
 	moving = true
 	m_to_pos = to_pos
 
-func _process(delta: float) -> void:
-	if !attacking:
-		attack()
+#func _process(delta: float) -> void:
+	#if !attacking:
+		#attack()
 
 func _physics_process(delta: float) -> void:
 	if moving:

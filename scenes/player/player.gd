@@ -1,6 +1,7 @@
 extends Node2D
 
 var hasControl = true
+var isDead = false
 
 func _ready():
 	$Area2D.area_entered.connect(death)
@@ -37,13 +38,21 @@ func move(speed):
 func death(area):
 	if area.name != "atkarea":
 		hasControl = false
+		isDead = true
 		$GPUParticles2D.emitting = true
-		$Icon.visible = false
 		# Need to defer set to prevent unexpected behavior
 		$Area2D.set_deferred("monitoring", false)
-		$Area2D.set_deferred("monitorable", false)
 		
 		await get_tree().create_timer(2).timeout
 		
 		get_parent().get_parent().add_child(load("res://scenes/mainmenu/mainmenu.tscn").instantiate())
 		get_parent().queue_free()
+
+# Drawing player sprite
+
+func _physics_process(delta: float) -> void:
+	queue_redraw()
+
+func _draw():
+	if !isDead:
+		draw_circle(Vector2(0,0), 10, Color("ff00ff"))
