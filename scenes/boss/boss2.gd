@@ -98,11 +98,6 @@ func attack(num : int = -1):
 
 func _ready():
 	await get_tree().create_timer(1).timeout
-	await attack(1)
-	await attack(1)
-	await attack(1)
-	await attack(1)
-	await attack(1)
 
 
 # Movement
@@ -114,9 +109,9 @@ func move(to_pos):
 	moving = true
 	m_to_pos = to_pos
 
-#func _process(delta: float) -> void:
-	#if !attacking:
-		#attack()
+func _process(delta: float) -> void:
+	if !attacking:
+		attack()
 
 func _physics_process(delta: float) -> void:
 	if moving:

@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	$atkicon.modulate.g = $Timer.time_left / $Timer.wait_time
 	
 	if steppedon:
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") and !get_parent().get_player().isDead:
 			attack()
 			if boss_health == 0:
 				get_parent().get_parent().add_child(load("res://scenes/mainmenu/mainmenu.tscn").instantiate())
