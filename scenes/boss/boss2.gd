@@ -67,7 +67,7 @@ func attack(num : int = -1):
 	
 	if num == -1:
 		randomize()
-		num = randi_range(1, 6)
+		num = randi_range(1, 7)
 	
 	match num:
 		2:
@@ -89,7 +89,9 @@ func attack(num : int = -1):
 			var mov_vec = Vector2(randi_range(0, 200), randi_range(0, 200))
 			move(global_position + mov_vec)
 		1:
-			await sweep(0, 3600, randi_range(361, 719), 200, randf_range(0.001, 0.1))
+			await sweep(0, 3600, randi_range(361, 719), 200, randf_range(0.001, 0.01))
+		7:
+			sweep(0, 3600, randi_range(361, 719), 200, randf_range(0.001, 0.1))
 			
 	emit_signal("next_attack")
 	attacking = false
@@ -121,3 +123,10 @@ func _physics_process(delta: float) -> void:
 			if global_position == m_to_pos:
 				moving = false
 				emit_signal("stopped_moving")
+	
+	queue_redraw()
+
+func _draw():
+	var tlc_pos = 128 * 1.2 / 2 * -1
+	draw_rect(Rect2(Vector2(tlc_pos,tlc_pos), Vector2(128 * 1.2, 128 * 1.2)), Color("00bbff"))
+	
